@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Deploy via SSH
         run: |
-          ssh deploy@172.21.21.109 "
+          ssh deploy@172.21.21.108 "
             cd /var/www/html &&
             git fetch origin &&
             git reset --hard origin/main
