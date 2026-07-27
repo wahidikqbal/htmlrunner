@@ -10,10 +10,18 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Deploy via SSH
+      - name: Deploy
         run: |
-          ssh root@172.21.21.108 "
-            cd /var/www/htmlrunner &&
-            git fetch origin &&
+          ssh root@172.21.21.108 << 'EOF'
+            set -ex
+
+            whoami
+            pwd
+            git config --global --add safe.directory /var/www/htmlrunner
+
+            cd /var/www/htmlrunner
+
+            git status
+            git fetch origin
             git reset --hard origin/main
-          "
+          EOF
